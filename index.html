@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Mading Digital | XI-5 Kelompok 3 - Media Sosial & Dampaknya</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts Poppins & Caveat (untuk tulisan tangan sticky notes) -->
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                        handwriting: ['Caveat', 'cursive'],
+                    },
+                    colors: {
+                        cork: '#f3f4f6',
+                        brand: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            500: '#0284c7',
+                            600: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .mading-bg {
+            background-color: #f8fafc;
+            background-image: radial-gradient(#cbd5e1 1.5px, transparent 1.5px);
+            background-size: 24px 24px;
+        }
+        .pin-shadow {
+            filter: drop-shadow(0px 3px 2px rgba(0,0,0,0.3));
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f5f9;
+            border-radius: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+        @keyframes pulse-subtle {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+        }
+        .animate-pulse-subtle {
+            animation: pulse-subtle 4s infinite ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800 font-sans min-h-screen flex flex-col antialiased mading-bg selection:bg-sky-500 selection:text-white">
+
+    <!-- HEADER & RUNNING TEXT MARQUEE -->
+    <header class="bg-gradient-to-r from-slate-900 via-sky-950 to-indigo-950 text-white border-b-4 border-amber-400 shadow-xl relative overflow-hidden">
+        <div class="absolute -right-16 -top-16 w-64 h-64 bg-sky-500/20 rounded-full blur-3xl"></div>
+        <div class="absolute left-1/4 -bottom-20 w-80 h-80 bg-indigo-500/20 rounded-full blur-3xl"></div>
+
+        <!-- Top Status Bar & Identity -->
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-4 relative z-10">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6 border-b border-slate-700/60 pb-6">
+                
+                <!-- Main Title & Badge -->
+                <div class="text-center md:text-left">
+                    <div class="inline-flex items-center gap-2 bg-amber-400 text-slate-950 font-extrabold px-3.5 py-1 rounded-full text-xs uppercase tracking-wider mb-2 shadow-md">
+                        <i class="fa-solid fa-thumbtack text-rose-600"></i> MAJALAH DINDING DIGITAL SEKOLAH
+                    </div>
+                    <h1 class="text-3xl sm:text-5xl font-black tracking-tight text-white flex flex-wrap items-center justify-center md:justify-start gap-3">
+                        MEDIA SOSIAL & DAMPAKNYA
+                    </h1>
+                    <p class="text-sky-200 mt-2 text-sm sm:text-base max-w-2xl font-light">
+                        Membongkar Ruang Digital: Menghubungkan Kreativitas, Memahami Risiko Mental, & Mengukir Jejak Digital Bijak.
+                    </p>
+                </div>
+                
+                <!-- Info Redaksi Card (Penerbit: Kelas XI-5 Kelompok 3) -->
+                <div class="bg-slate-900/80 backdrop-blur-md p-4 rounded-xl border border-sky-500/30 text-xs text-sky-100 min-w-[280px] shadow-2xl relative">
+                    <div class="w-3 h-3 bg-rose-500 rounded-full absolute -top-1.5 right-4 pin-shadow"></div>
+                    <div class="flex items-center gap-2 font-bold text-amber-300 border-b border-slate-700 pb-2 mb-2">
+                        <i class="fa-solid fa-users text-sm"></i> TIM REDAKSI / PENERBIT
+                    </div>
+                    <p class="flex justify-between py-1 border-b border-slate-800/60">
+                        <span class="text-slate-400">Penerbit Utama:</span> 
+                        <strong class="text-amber-400 font-bold">Kelas XI-5 Kelompok 3</strong>
+                    </p>
+                    <p class="flex justify-between py-1 border-b border-slate-800/60">
+                        <span class="text-slate-400">Edisi Khusus:</span> 
+                        <strong class="text-white">Media Sosial & Remaja</strong>
+                    </p>
+                    <p class="flex justify-between py-1">
+                        <span class="text-slate-400">Status:</span> 
+                        <strong class="text-emerald-400 flex items-center gap-1"><i class="fa-solid fa-circle text-[8px]"></i> Siap Dibaca</strong>
+                    </p>
+                </div>
+
+            </div>
+
+            <!-- Running Text Marquee -->
+            <div class="mt-4 bg-slate-900/60 backdrop-blur-sm rounded-lg px-4 py-2 border border-sky-500/20 flex items-center gap-3 overflow-hidden text-xs sm:text-sm">
+                <span class="bg-rose-600 text-white text-[10px] sm:text-xs font-bold px-2.5 py-0.5 rounded-md uppercase tracking-wider shrink-0 flex items-center gap-1">
+                    <i class="fa-solid fa-bullhorn animate-bounce"></i> Edukasi
+                </span>
+                <marquee class="text-sky-100 font-medium">
+                    "Saring Sebelum Sharing! Jagalah privasi data pribadimu, kurangi screen time berlebih, dan selalu bersikap bijak di kolom komentar. Karya persembahan dari Kelas XI-5 Kelompok 3."
+                </marquee>
+            </div>
+        </div>
+    </header>
+
+    <!-- NAVIGASI FILTER KATEGORI -->
+    <nav class="sticky top-0 z-30 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-start sm:justify-center gap-2 overflow-x-auto py-3 custom-scrollbar text-xs sm:text-sm font-medium">
+                <button onclick="filterCategory('all')" id="btn-all" class="category-btn active bg-sky-600 text-white px-4 py-2 rounded-full whitespace-nowrap transition-all shadow-md flex items-center gap-2">
+                    <i class="fa-solid fa-border-all"></i> Semua Rubrik
+                </button>
+                <button onclick="filterCategory('editorial')" id="btn-editorial" class="category-btn bg-slate-100 text-slate-700 hover:bg-sky-50 hover:text-sky-600 px-4 py-2 rounded-full whitespace-nowrap transition-all flex items-center gap-2">
+                    <i class="fa-solid fa-feather-pointed text-sky-500"></i> Editorial Utama
+                </button>
+                <button onclick="filterCategory('positif')" id="btn-positif" class="category-btn bg-slate-100 text-slate-700 hover:bg-emerald-50 hover:text-emerald-600 px-4 py-2 rounded-full whitespace-nowrap transition-all flex items-center gap-2">
+                    <i class="fa-solid fa-circle-check text-emerald-500"></i> Sisi Terang (Positif)
+                </button>
+                <button onclick="filterCategory('negatif')" id="btn-negatif" class="category-btn bg-slate-100 text-slate-700 hover:bg-rose-50 hover:text-rose-600 px-4 py-2 rounded-full whitespace-nowrap transition-all flex items-center gap-2">
+                    <i class="fa-solid fa-triangle-exclamation text-rose-500"></i> Sisi Gelap (Negatif)
+                </button>
+                <button onclick="filterCategory('tips')" id="btn-tips" class="category-btn bg-slate-100 text-slate-700 hover:bg-amber-50 hover:text-amber-600 px-4 py-2 rounded-full whitespace-nowrap transition-all flex items-center gap-2">
+                    <i class="fa-solid fa-lightbulb text-amber-500"></i> Panduan & Tips
+                </button>
+                <button onclick="filterCategory('opini')" id="btn-opini" class="category-btn bg-slate-100 text-slate-700 hover:bg-purple-50 hover:text-purple-600 px-4 py-2 rounded-full whitespace-nowrap transition-all flex items-center gap-2">
+                    <i class="fa-solid fa-comments text-purple-500"></i> Rubrik Opini
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- MAIN CONTENT AREA -->
+    <main class="flex-grow py-8 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto space-y-10">
+
+            <!-- STATISTIK & INFOGRAFIS RINGKAS (INFOBOX KARTU) -->
+            <section class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="bg-white p-4 sm:p-5 rounded-2xl shadow-sm border border-slate-200/80 flex items-center gap-4 relative overflow-hidden">
+                    <div class="w-12 h-12 bg-sky-100 text-sky-600 rounded-xl flex items-center justify-center text-xl shrink-0">
+                        <i class="fa-solid fa-users"></i>
+                    </div>
+                    <div>
+                        <p class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">Pengguna Aktif</p>
+                        <h4 class="text-xl sm:text-2xl font-black text-slate-800">191+ Juta</h4>
+                        <p class="text-[10px] text-emerald-600 font-medium">Pengguna Medsos di RI</p>
+                    </div>
+                </div>
+
+                <div class="bg-white p-4 sm:p-5 rounded-2xl shadow-sm border border-slate-200/80 flex items-center gap-4 relative overflow-hidden">
+                    <div class="w-12 h-12 bg-amber-100 text-amber-600 rounded-xl flex items-center justify-center text-xl shrink-0">
+                        <i class="fa-solid fa-clock"></i>
+                    </div>
+                    <div>
+                        <p class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">Rata-rata Durasi</p>
+                        <h4 class="text-xl sm:text-2xl font-black text-slate-800">3 Jam 18 Mnt</h4>
+                        <p class="text-[10px] text-amber-600 font-medium">Per Hari per Remaja</p>
+                    </div>
+                </div>
+
+                <div class="bg-white p-4 sm:p-5 rounded-2xl shadow-sm border border-slate-200/80 flex items-center gap-4 relative overflow-hidden">
+                    <div class="w-12 h-12 bg-rose-100 text-rose-600 rounded-xl flex items-center justify-center text-xl shrink-0">
+                        <i class="fa-solid fa-brain"></i>
+                    </div>
+                    <div>
+                        <p class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">Risiko FOMO</p>
+                        <h4 class="text-xl sm:text-2xl font-black text-slate-800">62%</h4>
+                        <p class="text-[10px] text-rose-600 font-medium">Remaja Merasa Cemas</p>
+                    </div>
+                </div>
+
+                <div class="bg-white p-4 sm:p-5 rounded-2xl shadow-sm border border-slate-200/80 flex items-center gap-4 relative overflow-hidden">
+                    <div class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-xl flex items-center justify-center text-xl shrink-0">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+                    <div>
+                        <p class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">Potensi Edukasi</p>
+                        <h4 class="text-xl sm:text-2xl font-black text-slate-800">78%</h4>
+                        <p class="text-[10px] text-emerald-600 font-medium">Belajar Materi Baru</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ARTIKEL UTAMA / EDITORIAL HEADLINE -->
+            <section id="headline-section" class="article-card" data-category="editorial positif negatif">
+                <div class="relative bg-white rounded-3xl shadow-xl overflow-hidden border border-slate-200 transition-all hover:shadow-2xl">
+                    <div class="absolute top-4 left-4 z-10 bg-amber-400 text-slate-950 font-bold text-xs uppercase px-3.5 py-1.5 rounded-full shadow-md flex items-center gap-1.5">
+                        <i class="fa-solid fa-star text-rose-600"></i> EDITORIAL UTAMA KELOMPOK 3
+                    </div>
+                    <div class="grid grid-cols-1 lg:grid-cols-12">
+                        <div class="lg:col-span-7 p-6 sm:p-10 flex flex-col justify-between">
+                            <div>
+                                <div class="flex items-center gap-3 text-xs text-slate-500 mb-3">
+                                    <span><i class="fa-regular fa-calendar"></i> Edisi Khusus XI-5</span>
+                                    <span>•</span>
+                                    <span><i class="fa-regular fa-clock"></i> 6 Menit Baca</span>
+                                    <span>•</span>
+                                    <span class="text-sky-600 font-bold">Oleh: XI-5 Kelompok 3</span>
+                                </div>
+                                <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-900 leading-tight mb-4 hover:text-sky-600 transition-colors cursor-pointer" onclick="openArticleModal(0)">
+                                    Mengarungi Samudra Digital: Antara Konektivitas dan Halusinasi Realitas
+                                </h2>
+                                <p class="text-slate-600 text-sm sm:text-base leading-relaxed mb-6 line-clamp-3">
+                                    Media sosial bukan lagi sekadar alat komunikasi tambahan, melainkan lingkungan hidup kedua bagi generasi muda. Dari sejarah pesan singkat hingga era algoritma FYP dan AI, platform seperti Instagram, TikTok, dan X telah membentuk persepsi kita terhadap realitas. Namun, di mana batas antara manfaat konektivitas dan ilusi kehidupan sempurna?
+                                </p>
+                            </div>
+                            <div class="flex items-center justify-between border-t border-slate-100 pt-5">
+                                <button onclick="openArticleModal(0)" class="inline-flex items-center gap-2 bg-sky-600 hover:bg-sky-700 text-white px-5 py-2.5 rounded-xl font-semibold text-sm transition-all shadow-md hover:shadow-lg">
+                                    Baca Ulasan Lengkap <i class="fa-solid fa-arrow-right"></i>
+                                </button>
+                                <button onclick="likeArticle(0)" class="flex items-center gap-2 text-xs font-semibold text-slate-600 bg-slate-100 hover:bg-rose-50 hover:text-rose-600 px-4 py-2 rounded-xl transition-colors">
+                                    <i class="fa-solid fa-heart text-rose-500"></i> <span id="like-count-0">328</span> Menyukai
+                                </button>
+                            </div>
+                        </div>
+                        <div class="lg:col-span-5 bg-gradient-to-br from-slate-900 via-sky-900 to-indigo-900 p-8 flex flex-col justify-center items-center text-white text-center relative min-h-[280px]">
+                            <div class="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center text-4xl mb-4 backdrop-blur-md animate-pulse-subtle">
+                                <i class="fa-solid fa-globe text-sky-400"></i>
+                            </div>
+                            <blockquote class="font-bold text-lg sm:text-xl text-sky-100 leading-snug max-w-xs">
+                                "Teknologi adalah sarana yang luar biasa, namun ia adalah tuan yang sangat kejam jika kita kehilangan kendali."
+                            </blockquote>
+                            <p class="text-xs text-sky-300 mt-3 font-mono">— Catatan Redaksi XI-5</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- GRID ARTIKEL LENGKAP -->
+            <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                <!-- CARD 1: Dampak Positif - Sisi Terang -->
+                <article class="article-card bg-white rounded-2xl shadow-md border border-slate-200 overflow-hidden flex flex-col justify-between relative hover:-translate-y-1 transition-all duration-300" data-category="positif">
+                    <div class="w-3 h-3 bg-emerald-500 rounded-full absolute top-4 right-4 pin-shadow"></div>
+                    <div class="p-6">
+                        <div class="inline-block bg-emerald-100 text-emerald-800 font-bold text-[11px] px-3 py-1 rounded-md mb-3">
+                            <i class="fa-solid fa-sun"></i> Sisi Terang Medsos
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-900 mb-2 cursor-pointer hover:text-sky-600 leading-snug" onclick="openArticleModal(1)">
+                            Akses Informasi, Personal Branding, & Peluang Ekonomi
+                        </h3>
+                        <p class="text-slate-600 text-sm line-clamp-3 mb-4">
+                            Medsos membuka ruang bagi pelajar untuk membangun portofolio digital, mempelajari keterampilan baru melalui konten edukasi, hingga memulai bisnis ekonomi kreatif sejak dini.
+                        </p>
+                    </div>
+                    <div class="px-6 py-3.5 bg-slate-50 border-t border-slate-100 flex items-center justify-between text-xs">
+                        <button onclick="openArticleModal(1)" class="font-bold text-sky-600 hover:text-sky-800">Selengkapnya <i class="fa-solid fa-angle-right"></i></button>
+                        <button onclick="likeArticle(1)" class="flex items-center gap-1.5 text-slate-500 hover:text-rose-500 font-medium">
+                            <i class="fa-solid fa-heart text-rose-500"></i> <span id="like-count-1">194</span>
+                        </button>
+                    </div>
+                </article>
+
+                <!-- CARD 2: Dampak Negatif - Sisi Gelap -->
+                <article class="article-card bg-white rounded-2xl shadow-md border border-slate-200 overflow-hidden flex flex-col justify-between relative hover:-translate-y-1 transition-all duration-300" data-category="negatif">
+                    <div class="w-3 h-3 bg-rose-500 rounded-full absolute top-4 right-4 pin-shadow"></div>
+                    <div class="p-6">
+                        <div class="inline-block bg-rose-100 text-rose-800 font-bold text-[11px] px-3 py-1 rounded-md mb-3">
+                            <i class="fa-solid fa-moon"></i> Sisi Gelap Medsos
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-900 mb-2 cursor-pointer hover:text-sky-600 leading-snug" onclick="openArticleModal(2)">
+                            Cyberbullying, FOMO, & Gangguan Kesehatan Mental
+                        </h3>
+                        <p class="text-slate-600 text-sm line-clamp-3 mb-4">
+                            Bahaya ujaran kebencian, jebakan Fear of Missing Out (FOMO), dan adiksi algoritma yang berisiko menurunkan rasa percaya diri serta memicu Stres dan kecemasan remaja.
+                        </p>
+                    </div>
+                    <div class="px-6 py-3.5 bg-slate-50 border-t border-slate-100 flex items-center justify-between text-xs">
+                        <button onclick="openArticleModal(2)" class="font-bold text-sky-600 hover:text-sky-800">Selengkapnya <i class="fa-solid fa-angle-right"></i></button>
+                        <button onclick="likeArticle(2)" class="flex items-center gap-1.5 text-slate-500 hover:text-rose-500 font-medium">
+                            <i class="fa-solid fa-heart text-rose-500"></i> <span id="like-count-2">281</span>
+                        </button>
+                    </div>
+                </article>
+
+                <!-- CARD 3: Tips & Panduan Smart Digital Citizen -->
+                <article class="article-card bg-white rounded-2xl shadow-md border border-slate-200 overflow-hidden flex flex-col justify-between relative hover:-translate-y-1 transition-all duration-300" data-category="tips">
+                    <div class="w-3 h-3 bg-amber-500 rounded-full absolute top-4 right-4 pin-shadow"></div>
+                    <div class="p-6">
+                        <div class="inline-block bg-amber-100 text-amber-800 font-bold text-[11px] px-3 py-1 rounded-md mb-3">
+                            <i class="fa-solid fa-shield-halved"></i> Panduan Bijak
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-900 mb-2 cursor-pointer hover:text-sky-600 leading-snug" onclick="openArticleModal(3)">
+                            Panduan Smart Digital Citizen: 5 Langkah Bijak
+                        </h3>
+                        <p class="text-slate-600 text-sm line-clamp-3 mb-4">
+                            Pelajari strategi Saring Sebelum Sharing, teknik manajemen screen time, etika berkomentar sopan, serta tips perlindungan keamanan data pribadi kamu.
+                        </p>
+                    </div>
+                    <div class="px-6 py-3.5 bg-slate-50 border-t border-slate-100 flex items-center justify-between text-xs">
+                        <button onclick="openArticleModal(3)" class="font-bold text-sky-600 hover:text-sky-800">Selengkapnya <i class="fa-solid fa-angle-right"></i></button>
+                        <button onclick="likeArticle(3)" class="flex items-center gap-1.5 text-slate-500 hover:text-rose-500 font-medium">
+                            <i class="fa-solid fa-heart text-rose-500"></i> <span id="like-count-3">412</span>
+                        </button>
+                    </div>
+                </article>
+
+                <!-- CARD 4: Rubrik Opini - Doomscrolling -->
+                <article class="article-card bg-white rounded-2xl shadow-md border border-slate-200 overflow-hidden flex flex-col justify-between relative hover:-translate-y-1 transition-all duration-300" data-category="opini negatif">
+                    <div class="w-3 h-3 bg-purple-500 rounded-full absolute top-4 right-4 pin-shadow"></div>
+                    <div class="p-6">
+                        <div class="inline-block bg-purple-100 text-purple-800 font-bold text-[11px] px-3 py-1 rounded-md mb-3">
+                            <i class="fa-solid fa-comments"></i> Rubrik Opini
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-900 mb-2 cursor-pointer hover:text-sky-600 leading-snug" onclick="openArticleModal(4)">
+                            Jebakan Fenomena "Doomscrolling" Sebelum Tidur
+                        </h3>
+                        <p class="text-slate-600 text-sm line-clamp-3 mb-4">
+                            Mengapa kita sulit berhenti mengusap layar meski berita yang dibaca membuat cemas? Kupas tuntas fenomena Doomscrolling dan dampaknya bagi kualitas tidur.
+                        </p>
+                    </div>
+                    <div class="px-6 py-3.5 bg-slate-50 border-t border-slate-100 flex items-center justify-between text-xs">
+                        <button onclick="openArticleModal(4)" class="font-bold text-sky-600 hover:text-sky-800">Selengkapnya <i class="fa-solid fa-angle-right"></i></button>
+                        <button onclick="likeArticle(4)" class="flex items-center gap-1.5 text-slate-500 hover:text-rose-500 font-medium">
+                            <i class="fa-solid fa-heart text-rose-500"></i> <span id="like-count-4">156</span>
+                        </button>
+                    </div>
+                </article>
+
+                <!-- CARD 5: Tips - Hoaks & Disinformasi -->
+                <article class="article-card bg-white rounded-2xl shadow-md border border-slate-200 overflow-hidden flex flex-col justify-between relative hover:-translate-y-1 transition-all duration-300" data-category="tips negatif">
+                    <div class="w-3 h-3 bg-sky-500 rounded-full absolute top-4 right-4 pin-shadow"></div>
+                    <div class="p-6">
+                        <div class="inline-block bg-sky-100 text-sky-800 font-bold text-[11px] px-3 py-1 rounded-md mb-3">
+                            <i class="fa-solid fa-magnifying-glass"></i> Cek Fakta
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-900 mb-2 cursor-pointer hover:text-sky-600 leading-snug" onclick="openArticleModal(5)">
+                            Mengenali Hoaks & Disinformasi Berbasis Algoritma
+                        </h3>
+                        <p class="text-slate-600 text-sm line-clamp-3 mb-4">
+                            Bagaimana filter bubble memperparah penyebaran informasi palsu? Tips praktis melakukan cek fakta independen sebelum membagikan ulang berita.
+                        </p>
+                    </div>
+                    <div class="px-6 py-3.5 bg-slate-50 border-t border-slate-100 flex items-center justify-between text-xs">
+                        <button onclick="openArticleModal(5)" class="font-bold text-sky-600 hover:text-sky-800">Selengkapnya <i class="fa-solid fa-angle-right"></i></button>
+                        <button onclick="likeArticle(5)" class="flex items-center gap-1.5 text-slate-500 hover:text-rose-500 font-medium">
+                            <i class="fa-solid fa-heart text-rose-500"></i> <span id="like-count-5">188</span>
+                        </button>
+                    </div>
+                </article>
+
+                <!-- CARD 6: Rubrik Opini - Jejak Digital -->
+                <article class="article-card bg-white rounded-2xl shadow-md border border-slate-200 overflow-hidden flex flex-col justify-between relative hover:-translate-y-1 transition-all duration-300" data-category="opini positif">
+                    <div class="w-3 h-3 bg-indigo-500 rounded-full absolute top-4 right-4 pin-shadow"></div>
+                    <div class="p-6">
+                        <div class="inline-block bg-indigo-100 text-indigo-800 font-bold text-[11px] px-3 py-1 rounded-md mb-3">
+                            <i class="fa-solid fa-fingerprint"></i> Kesadaran Digital
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-900 mb-2 cursor-pointer hover:text-sky-600 leading-snug" onclick="openArticleModal(6)">
+                            Jejak Digital Itu Abadi: Warisan Masa Depan Remaja
+                        </h3>
+                        <p class="text-slate-600 text-sm line-clamp-3 mb-4">
+                            Setiap komentar, unggahan, dan suka membentuk rekam jejak digitalmu. Mengapa perguruan tinggi dan perusahaan masa depan memperhatikan jejak digitalmu?
+                        </p>
+                    </div>
+                    <div class="px-6 py-3.5 bg-slate-50 border-t border-slate-100 flex items-center justify-between text-xs">
+                        <button onclick="openArticleModal(6)" class="font-bold text-sky-600 hover:text-sky-800">Selengkapnya <i class="fa-solid fa-angle-right"></i></button>
+                        <button onclick="likeArticle(6)" class="flex items-center gap-1.5 text-slate-500 hover:text-rose-500 font-medium">
+                            <i class="fa-solid fa-heart text-rose-500"></i> <span id="like-count-6">230</span>
+                        </button>
+                    </div>
+                </article>
+
+            </section>
+
+            <!-- GALERI POSTER / KARYA VISUAL EDUKASI -->
+            <section class="bg-slate-900 text-white rounded-3xl p-6 sm:p-8 shadow-xl border border-slate-800 relative overflow-hidden">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6 border-b border-slate-800 pb-4">
+                    <div>
+                        <span class="text-amber-400 font-bold text-xs uppercase tracking-wider">Karya Visual Edukasi</span>
+                        <h3 class="text-2xl font-black text-white flex items-center gap-2">
+                            <i class="fa-solid fa-palette text-sky-400"></i> Galeri Poster Kampanye Bijak Medsos
+                        </h3>
+                    </div>
+                    <span class="text-xs text-slate-400 bg-slate-800 px-3 py-1.5 rounded-full border border-slate-700">
+                        Karya Siswa XI-5 Kelompok 3
+                    </span>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Poster 1 -->
+                    <div class="bg-slate-800/80 rounded-2xl p-4 border border-slate-700/60 flex flex-col justify-between hover:border-sky-500 transition-all group">
+                        <div class="bg-gradient-to-br from-rose-500 to-amber-500 h-48 rounded-xl flex flex-col justify-center items-center p-6 text-center shadow-inner relative overflow-hidden group-hover:scale-[1.01] transition-transform">
+                            <i class="fa-solid fa-stopwatch text-5xl text-white mb-3 opacity-90"></i>
+                            <h4 class="font-black text-white text-xl uppercase tracking-tight">Kendalikan Layarmu!</h4>
+                            <p class="text-xs text-rose-100 mt-1 font-medium">"Jangan biarkan notification bell mengatur detak jantungmu."</p>
+                        </div>
+                        <div class="mt-4">
+                            <h5 class="font-bold text-sm text-white">Poster #1: Screen Time Control</h5>
+                            <p class="text-xs text-slate-400 mt-1">Mengajak siswa membatasi durasi main HP maksimal 2 jam untuk kesehatan mata dan mental.</p>
+                        </div>
+                    </div>
+
+                    <!-- Poster 2 -->
+                    <div class="bg-slate-800/80 rounded-2xl p-4 border border-slate-700/60 flex flex-col justify-between hover:border-sky-500 transition-all group">
+                        <div class="bg-gradient-to-br from-sky-600 to-indigo-600 h-48 rounded-xl flex flex-col justify-center items-center p-6 text-center shadow-inner relative overflow-hidden group-hover:scale-[1.01] transition-transform">
+                            <i class="fa-solid fa-comment-slash text-5xl text-white mb-3 opacity-90"></i>
+                            <h4 class="font-black text-white text-xl uppercase tracking-tight">Ketik Dengan Hati</h4>
+                            <p class="text-xs text-sky-100 mt-1 font-medium">"Satu kata manismu bisa menyelamatkan hari seseorang."</p>
+                        </div>
+                        <div class="mt-4">
+                            <h5 class="font-bold text-sm text-white">Poster #2: Anti-Cyberbullying</h5>
+                            <p class="text-xs text-slate-400 mt-1">Mengampanyekan budaya empati dan kesopanan saat berkomentar di media sosial.</p>
+                        </div>
+                    </div>
+
+                    <!-- Poster 3 -->
+                    <div class="bg-slate-800/80 rounded-2xl p-4 border border-slate-700/60 flex flex-col justify-between hover:border-sky-500 transition-all group">
+                        <div class="bg-gradient-to-br from-emerald-600 to-teal-700 h-48 rounded-xl flex flex-col justify-center items-center p-6 text-center shadow-inner relative overflow-hidden group-hover:scale-[1.01] transition-transform">
+                            <i class="fa-solid fa-lock text-5xl text-white mb-3 opacity-90"></i>
+                            <h4 class="font-black text-white text-xl uppercase tracking-tight">Jagalah Privasimu</h4>
+                            <p class="text-xs text-emerald-100 mt-1 font-medium">"Data pribadimu bukan konsumsi publik."</p>
+                        </div>
+                        <div class="mt-4">
+                            <h5 class="font-bold text-sm text-white">Poster #3: Privacy Matters</h5>
+                            <p class="text-xs text-slate-400 mt-1">Edukasi pencegahan bahaya kebocoran data dan lokasi real-time di media sosial.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FITUR INTERAKTIF: POLLING REAL-TIME & STICKY NOTES -->
+            <section class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+
+                <!-- POLLING INTERAKTIF REAL-TIME (5 COLS) -->
+                <div class="lg:col-span-5 bg-white rounded-3xl shadow-xl border border-slate-200 p-6 sm:p-7 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-2 text-sky-600 font-extrabold text-xs uppercase tracking-wider mb-2">
+                            <i class="fa-solid fa-square-poll-vertical text-base"></i> Polling Siswa XI-5
+                        </div>
+                        <h3 class="text-xl font-black text-slate-900 mb-2 leading-snug">Berapa jam rata-rata screen time media sosialmu dalam sehari?</h3>
+                        <p class="text-xs text-slate-500 mb-6">Pilih jawabanmu untuk melihat statistik real-time dari siswa lainnya!</p>
+
+                        <!-- Pilihan Polling -->
+                        <div id="poll-options" class="space-y-3">
+                            <button onclick="votePoll('opt1')" class="w-full text-left p-3.5 rounded-2xl border border-slate-200 hover:border-sky-500 hover:bg-sky-50/50 transition-all text-xs sm:text-sm font-semibold flex justify-between items-center group">
+                                <span class="group-hover:text-sky-700">&lt; 2 Jam (Sangat Terkontrol)</span>
+                                <i class="fa-regular fa-circle text-slate-300 group-hover:text-sky-500"></i>
+                            </button>
+                            <button onclick="votePoll('opt2')" class="w-full text-left p-3.5 rounded-2xl border border-slate-200 hover:border-sky-500 hover:bg-sky-50/50 transition-all text-xs sm:text-sm font-semibold flex justify-between items-center group">
+                                <span class="group-hover:text-sky-700">2 - 4 Jam (Wajar)</span>
+                                <i class="fa-regular fa-circle text-slate-300 group-hover:text-sky-500"></i>
+                            </button>
+                            <button onclick="votePoll('opt3')" class="w-full text-left p-3.5 rounded-2xl border border-slate-200 hover:border-sky-500 hover:bg-sky-50/50 transition-all text-xs sm:text-sm font-semibold flex justify-between items-center group">
+                                <span class="group-hover:text-sky-700">4 - 6 Jam (Cukup Sering)</span>
+                                <i class="fa-regular fa-circle text-slate-300 group-hover:text-sky-500"></i>
+                            </button>
+                            <button onclick="votePoll('opt4')" class="w-full text-left p-3.5 rounded-2xl border border-slate-200 hover:border-sky-500 hover:bg-sky-50/50 transition-all text-xs sm:text-sm font-semibold flex justify-between items-center group">
+                                <span class="group-hover:text-sky-700">&gt; 6 Jam (Perlu Digital Detox!)</span>
+                                <i class="fa-regular fa-circle text-slate-300 group-hover:text-sky-500"></i>
+                            </button>
+                        </div>
+
+                        <!-- Hasil Polling Real-time -->
+                        <div id="poll-results" class="hidden space-y-4">
+                            <div>
+                                <div class="flex justify-between text-xs font-bold mb-1">
+                                    <span class="text-slate-700">&lt; 2 Jam</span>
+                                    <span id="percent-opt1" class="text-sky-600">18%</span>
+                                </div>
+                                <div class="w-full bg-slate-100 rounded-full h-3 overflow-hidden">
+                                    <div id="bar-opt1" class="bg-emerald-500 h-3 rounded-full transition-all duration-1000" style="width: 18%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between text-xs font-bold mb-1">
+                                    <span class="text-slate-700">2 - 4 Jam</span>
+                                    <span id="percent-opt2" class="text-sky-600">38%</span>
+                                </div>
+                                <div class="w-full bg-slate-100 rounded-full h-3 overflow-hidden">
+                                    <div id="bar-opt2" class="bg-sky-500 h-3 rounded-full transition-all duration-1000" style="width: 38%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between text-xs font-bold mb-1">
+                                    <span class="text-slate-700">4 - 6 Jam</span>
+                                    <span id="percent-opt3" class="text-sky-600">29%</span>
+                                </div>
+                                <div class="w-full bg-slate-100 rounded-full h-3 overflow-hidden">
+                                    <div id="bar-opt3" class="bg-amber-500 h-3 rounded-full transition-all duration-1000" style="width: 29%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between text-xs font-bold mb-1">
+                                    <span class="text-slate-700">&gt; 6 Jam</span>
+                                    <span id="percent-opt4" class="text-sky-600">15%</span>
+                                </div>
+                                <div class="w-full bg-slate-100 rounded-full h-3 overflow-hidden">
+                                    <div id="bar-opt4" class="bg-rose-500 h-3 rounded-full transition-all duration-1000" style="width: 15%"></div>
+                                </div>
+                            </div>
+                            <p class="text-center text-xs text-emerald-600 font-semibold mt-3"><i class="fa-solid fa-check-circle"></i> Suaramu telah berhasil dicatat!</p>
+                        </div>
+                    </div>
+
+                    <div class="border-t border-slate-100 pt-4 mt-6 text-xs text-slate-400 text-center font-medium">
+                        Total Responden: <span id="total-votes" class="font-bold text-slate-700">312</span> siswa
+                    </div>
+                </div>
+
+                <!-- PAPAN STICKY NOTES INTERAKTIF (7 COLS) -->
+                <div class="lg:col-span-7 bg-amber-100/80 rounded-3xl border-2 border-amber-300 p-6 sm:p-7 shadow-xl relative flex flex-col justify-between">
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 mb-4 border-b border-amber-200/80 pb-4">
+                        <div>
+                            <h3 class="text-xl font-black text-slate-900 flex items-center gap-2">
+                                <i class="fa-solid fa-note-sticky text-amber-600"></i> Papan Tempel Suara Siswa
+                            </h3>
+                            <p class="text-xs text-slate-600">Bagikan opini, komitmen, atau tips bijak medsos-mu di mading ini!</p>
+                        </div>
+                        <button onclick="toggleStickyModal()" class="bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold text-xs px-4 py-2.5 rounded-xl shadow-md hover:shadow-lg transition-all flex items-center gap-2 shrink-0">
+                            <i class="fa-solid fa-plus-circle"></i> Tempel Sticky Note
+                        </button>
+                    </div>
+
+                    <!-- Grid Container Sticky Notes -->
+                    <div id="sticky-board" class="grid grid-cols-1 sm:grid-cols-2 gap-4 max-h-[380px] overflow-y-auto custom-scrollbar p-1">
+                        
+                        <!-- Sticky Note 1 -->
+                        <div class="bg-yellow-200 p-4 rounded-xl shadow-md transform -rotate-1 hover:rotate-0 transition-transform relative">
+                            <div class="w-3.5 h-3.5 bg-rose-500 rounded-full absolute -top-1.5 left-1/2 -translate-x-1/2 pin-shadow"></div>
+                            <p class="font-handwriting text-xl text-slate-800 leading-snug">
+                                "Jangan pernah bikin keputusan atau kirim pesan pas lagi emosi di medsos. Napas dulu 10 detik!"
+                            </p>
+                            <span class="block text-right text-xs font-bold text-slate-600 mt-2">— Naufal (XI-5)</span>
+                        </div>
+
+                        <!-- Sticky Note 2 -->
+                        <div class="bg-pink-200 p-4 rounded-lg shadow-md transform rotate-2 hover:rotate-0 transition-transform relative">
+                            <div class="w-3.5 h-3.5 bg-sky-500 rounded-full absolute -top-1.5 left-1/2 -translate-x-1/2 pin-shadow"></div>
+                            <p class="font-handwriting text-xl text-slate-800 leading-snug">
+                                "Latihan digital detox tiap weekend itu enak banget! Otak rasanya lebih fresh pas hari Senin."
+                            </p>
+                            <span class="block text-right text-xs font-bold text-slate-600 mt-2">— Aurel (XI-5 Kel 3)</span>
+                        </div>
+
+                        <!-- Sticky Note 3 -->
+                        <div class="bg-teal-200 p-4 rounded-lg shadow-md transform -rotate-2 hover:rotate-0 transition-transform relative">
+                            <div class="w-3.5 h-3.5 bg-purple-500 rounded-full absolute -top-1.5 left-1/2 -translate-x-1/2 pin-shadow"></div>
+                            <p class="font-handwriting text-xl text-slate-800 leading-snug">
+                                "Komentar positifmu bisa jadi penyemangat orang lain yang lagi down. Spread love, not hate!"
+                            </p>
+                            <span class="block text-right text-xs font-bold text-slate-600 mt-2">— Anggota Kelompok 3</span>
+                        </div>
+
+                    </div>
+
+                    <p class="text-[11px] text-amber-800/70 text-center mt-3 italic font-medium">Catatan baru akan langsung tampil di papan mading digital secara interaktif!</p>
+                </div>
+
+            </section>
+
+        </div>
+    </main>
+
+    <!-- FOOTER LENGKAP -->
+    <footer class="bg-slate-950 text-slate-400 py-10 border-t-4 border-sky-600">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6 border-b border-slate-800 pb-8 text-center md:text-left">
+                <div>
+                    <h3 class="text-white font-black text-xl flex items-center justify-center md:justify-start gap-2">
+                        <i class="fa-solid fa-graduation-cap text-sky-400"></i> E-MADING EDUKASI DIGITAL
+                    </h3>
+                    <p class="text-xs text-slate-400 mt-1">Edisi Khusus Pembelajaran Literasi Digital & Etika Media Sosial Remaja</p>
+                </div>
+                
+                <div class="bg-slate-900 border border-slate-800 px-5 py-3 rounded-2xl text-xs text-slate-300">
+                    <p class="font-bold text-amber-400 mb-0.5">Diterbitkan Oleh:</p>
+                    <p class="font-extrabold text-white text-sm">KELAS XI-5 KELOMPOK 3</p>
+                </div>
+            </div>
+
+            <div class="pt-6 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-slate-500">
+                <p>© 2026 E-Mading Digital XI-5 Kelompok 3. Hak Cipta Dilindungi.</p>
+                <div class="flex items-center gap-4">
+                    <span class="hover:text-slate-300 transition-colors cursor-pointer"><i class="fa-solid fa-shield-halved"></i> Privasi Data</span>
+                    <span>•</span>
+                    <span class="hover:text-slate-300 transition-colors cursor-pointer"><i class="fa-solid fa-book-open"></i> Etika Digital</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- MODAL POPUP READ ARTIKEL LENGKAP -->
+    <div id="article-modal" class="fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-md hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-3xl w-full max-h-[90vh] overflow-y-auto custom-scrollbar shadow-2xl border border-slate-200 p-6 sm:p-10 relative">
+            <button onclick="closeArticleModal()" class="absolute top-5 right-5 text-slate-400 hover:text-slate-700 text-2xl w-10 h-10 flex items-center justify-center rounded-full bg-slate-100 hover:bg-slate-200 transition-all">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div id="modal-content">
+                <!-- Dynamically populated via JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL POPUP FORM TAMBAH STICKY NOTE -->
+    <div id="sticky-modal" class="fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-md hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-md w-full shadow-2xl border border-slate-200 p-6 sm:p-8 relative">
+            <h3 class="text-xl font-extrabold text-slate-900 mb-4 flex items-center gap-2">
+                <i class="fa-solid fa-pen-to-square text-amber-500"></i> Tempel Pesan di Mading
+            </h3>
+            
+            <form onsubmit="addStickyNote(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">Nama / Inisial Penulis:</label>
+                    <input type="text" id="sticky-author" required placeholder="Contoh: Rian (XI-5)" class="w-full text-xs sm:text-sm border border-slate-300 rounded-xl p-3 focus:ring-2 focus:ring-sky-500 focus:outline-none">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">Pesan / Tips Bijak Medsos:</label>
+                    <textarea id="sticky-text" required rows="3" placeholder="Tuliskan kata-kata motivasi, pengalaman, atau tips bermedia sosial..." class="w-full text-xs sm:text-sm border border-slate-300 rounded-xl p-3 focus:ring-2 focus:ring-sky-500 focus:outline-none"></textarea>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">Pilih Warna Sticky Note:</label>
+                    <select id="sticky-color" class="w-full text-xs sm:text-sm border border-slate-300 rounded-xl p-3 focus:ring-2 focus:ring-sky-500 focus:outline-none">
+                        <option value="bg-yellow-200">Kuning Cerah</option>
+                        <option value="bg-pink-200">Merah Muda (Pink)</option>
+                        <option value="bg-teal-200">Hijau Toska</option>
+                        <option value="bg-purple-200">Ungu Soft</option>
+                        <option value="bg-sky-200">Biru Muda</option>
+                    </select>
+                </div>
+                <div class="flex justify-end gap-2 pt-2">
+                    <button type="button" onclick="toggleStickyModal()" class="px-4 py-2.5 text-xs font-semibold text-slate-600 hover:bg-slate-100 rounded-xl">Batal</button>
+                    <button type="submit" class="px-5 py-2.5 text-xs font-bold text-white bg-sky-600 hover:bg-sky-700 rounded-xl shadow-md">Tempelkan Sekarang</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT APP LOGIC -->
+    <script>
+        
+        // DATABASE KONTEN ARTIKEL LENGKAP & MENDALAM
+        const articlesData = [
+            {
+                title: "Mengarungi Samudra Digital: Antara Konektivitas dan Halusinasi Realitas",
+                category: "Editorial Utama • Penerbit XI-5 Kelompok 3",
+                date: "Edisi Khusus XI-5",
+                author: "Tim Redaksi Kelompok 3",
+                readTime: "6 Menit Baca",
+                content: `
+                    <p class="mb-4">Media sosial telah berevolusi dari sekadar sarana saling bertukar pesan menjadi ekosistem digital yang memengaruhi hampir seluruh aspek kehidupan manusia, terutama generasi muda. Platform modern seperti Instagram, TikTok, dan X bukan lagi sekadar aplikasi di dalam smartphone, melainkan panggung utama tempat remaja membentuk identitas sosial, mengekspresikan diri, dan mengonsumsi informasi secara real-time.</p>
+                    
+                    <h4 class="text-base font-bold text-slate-900 mt-6 mb-2">Sejarah Singkat & Perubahan Paradigma</h4>
+                    <p class="mb-4">Dua dekade lalu, internet berbasis teks seperti SixDegrees atau Friendster hanya digunakan untuk menyapa teman lama. Kini, algoritma Machine Learning canggih merancang linimasa individual yang disesuaikan secara khusus dengan minat dan perilaku pengguna. Akibatnya, kita sering berada dalam "filter bubble"—sebuah kondisi di mana kita hanya melihat apa yang ingin kita lihat.</p>
+
+                    <h4 class="text-base font-bold text-slate-900 mt-6 mb-2">Realitas vs Toksisitas Validasi Digital</h4>
+                    <p class="mb-4">Dampak psikologis terbesar dari fenomena ini adalah ketergantungan pada validasi eksternal berupa suka (likes), komentar, dan jumlah pengikut. Banyak remaja tanpa sadar terjebak dalam membandingkan kehidupan sehari-hari mereka yang biasa saja dengan 'highlight reel' atau momen terbaik orang lain yang sering kali telah disunting secara estetis.</p>
+
+                    <blockquote class="bg-sky-50 border-l-4 border-sky-500 p-4 rounded-r-xl italic text-slate-700 my-6 text-sm">
+                        "Media sosial seperti cermin ajaib yang bisa memperbesar potensi terbaikmu, tetapi juga bisa meretakkan rasa percaya dirimu jika kamu mengukur harga dirimu dari tombol suka."
+                    </blockquote>
+
+                    <h4 class="text-base font-bold text-slate-900 mt-6 mb-2">Langkah Reflektif Kelompok 3</h4>
+                    <p class="mb-4">Sebagai pelajar Kelas XI-5, kita harus menyadari bahwa teknologi adalah alat penunjang hidup, bukan penentu kebahagiaan. Memahami ganda-sifat media sosial—sebagai wadah inovasi sekaligus potensi ancaman psikologis—adalah langkah awal menjadi generasi digital yang cerdas, tangguh, dan bijaksana.</p>
+                `
+            },
+            {
+                title: "Sisi Terang Media Sosial: Akses Informasi, Personal Branding, & Peluang Ekonomi Kreatif",
+                category: "Dampak Positif",
+                date: "Edisi Khusus XI-5",
+                author: "Kelompok 3 XI-5",
+                readTime: "4 Menit Baca",
+                content: `
+                    <p class="mb-4">Di balik berbagai kritik yang ada, media sosial sejatinya menyimpan potensi luar biasa yang telah mengubah cara remaja belajar, berkarya, dan mempersiapkan masa depan mereka.</p>
+
+                    <h4 class="text-base font-bold text-slate-900 mt-6 mb-2">1. Demokratisasi Informasi & Sumber Belajar Gratis</h4>
+                    <p class="mb-4">Dahulu, belajar membutuhkan akses fisik ke perpustakaan atau buku yang mahal. Saat ini, melalui akun edukasi di YouTube, TikTok Edu, dan LinkedIn, pelajar dapat mempelajari konsep matematika rumit, pemrograman komputer, bahasa asing, hingga persiapan ujian masuk perguruan tinggi secara gratis dari para ahli di seluruh dunia.</p>
+
+                    <h4 class="text-base font-bold text-slate-900 mt-6 mb-2">2. Membangun Personal Branding Sejak Sekolah</h4>
+                    <p class="mb-4">Medsos memberikan panggung yang setara bagi setiap remaja untuk memamerkan bakat alami mereka. Karya seni digital, tulisan ilmiah, video dokumenter sekolah, hingga portofolio fotografi dapat diunggah dan dilihat oleh jutaan orang, membuka peluang beasiswa maupun kolaborasi positif.</p>
+
+                    <h4 class="text-base font-bold text-slate-900 mt-6 mb-2">3. Peluang Ekonomi Kreatif & Kewirausahaan Muda</h4>
+                    <p class="mb-4">Banyak pelajar SMA masa kini yang berhasil membiayai kebutuhan sekolah mereka sendiri dengan memanfaatkan sosial media marketing, menjual produk kerajinan tangan melalui konten kreatif, atau menjadi kreator konten berdedikasi.</p>
+                `
+            },
+            {
+                title: "Sisi Gelap Di Balik Layar: Cyberbullying, FOMO, & Gangguan Kesehatan Mental",
+                category: "Dampak Negatif & Risiko",
+                date: "Edisi Khusus XI-5",
+                author: "Kelompok 3 XI-5",
+                readTime: "5 Menit Baca",
+                content: `
+                    <p class="mb-4">Penggunaan media sosial tanpa batas dan tanpa etika dapat menimbulkan dampak merusak yang serius bagi kesehatan mental dan fisik para remaja.</p>
+
+                    <h4 class="text-base font-bold text-slate-900 mt-6 mb-2">1. Ancaman Cyberbullying & Kejahatan Siber</h4>
+                    <p class="mb-4">Perundungan siber (cyberbullying) merupakan salah satu isu paling mendesak. Sifat anonim di internet sering kali membuat oknum merasa bebas melempar komentar jahat, menyebarkan rumor palsu, atau melakukan doxxing (menyebarkan data pribadi secara ilegal) yang berakibat trauma mendalam bagi korbannya.</p>
+
+                    <h4 class="text-base font-bold text-slate-900 mt-6 mb-2">2. Fenomena FOMO (Fear of Missing Out)</h4>
+                    <p class="mb-4">FOMO adalah perasaan cemas terus-menerus bahwa orang lain mengalami pengalaman menyenangkan sementara kita tertinggal. Hal ini memicu kecanduan memeriksa notifikasi ponsel secara terus-menerus, bahkan di tengah jam pelajaran sekolah atau waktu tidur malam.</p>
+
+                    <h4 class="text-base font-bold text-slate-900 mt-6 mb-2">3. Penurunan Kualitas Tidur & Adiksi Dopamin</h4>
+                    <p class="mb-4">Paparan sinar biru (blue light) layar HP di malam hari mengganggu produksi hormon melatonin yang mengatur tidur. Ditambah lagi, siklus pemicu dopamin singkat dari video pendek membuat otak cepat lelah dan sulit berkonsentrasi saat belajar.</p>
+                `
+            },
+            {
+                title: "Panduan Smart Digital Citizen: 5 Langkah Bijak Bermedia Sosial",
+                category: "Tips & Edukasi",
+                date: "Edisi Khusus XI-5",
+                author: "Tim Edukasi XI-5 Kelompok 3",
+                readTime: "4 Menit Baca",
+                content: `
+                    <p class="mb-4">Untuk menjadi pengguna internet yang cerdas dan aman, berikut adalah panduan praktis 5 langkah yang dapat diterapkan langsung oleh seluruh siswa:</p>
+
+                    <div class="space-y-4 my-6">
+                        <div class="p-4 bg-slate-50 border border-slate-200 rounded-xl">
+                            <h5 class="font-bold text-slate-900 text-sm">1. Prinsip "THINK" Sebelum Mengunggah</h5>
+                            <p class="text-xs text-slate-600 mt-1">Apakah pesanmu True (Benar), Helpful (Membantu), Inspiring (Menginspirasi), Necessary (Penting), dan Kind (Santun)? Jika tidak memenuhi kriteria ini, pertimbangkan kembali.</p>
+                        </div>
+                        <div class="p-4 bg-slate-50 border border-slate-200 rounded-xl">
+                            <h5 class="font-bold text-slate-900 text-sm">2. Atur Batas Waktu Layar (Screen Time)</h5>
+                            <p class="text-xs text-slate-600 mt-1">Gunakan fitur pembatas aplikasi di HP-mu. Alokasikan waktu maksimal 1-2 jam per hari untuk hiburan medsos agar tugas sekolah dan interaksi nyata tidak terganggu.</p>
+                        </div>
+                        <div class="p-4 bg-slate-50 border border-slate-200 rounded-xl">
+                            <h5 class="font-bold text-slate-900 text-sm">3. Lindungi Privasi & Data Pribadi</h5>
+                            <p class="text-xs text-slate-600 mt-1">Jangan pernah bagikan lokasi real-time, alamat rumah, nomor telepon, atau dokumen identitas di linimasa publik. Aktifkan otentikasi dua faktor (2FA) pada seluruh akunmu.</p>
+                        </div>
+                        <div class="p-4 bg-slate-50 border border-slate-200 rounded-xl">
+                            <h5 class="font-bold text-slate-900 text-sm">4. Bersihkan Lini Masa (Curate Your Feed)</h5>
+                            <p class="text-xs text-slate-600 mt-1">Berhentilah mengikuti (unfollow/mute) akun-akun yang membuatmu merasa cemas, minder, atau tertekan. Ikuti akun-akun edukatif dan positif.</p>
+                        </div>
+                        <div class="p-4 bg-slate-50 border border-slate-200 rounded-xl">
+                            <h5 class="font-bold text-slate-900 text-sm">5. Terapkan "Digital Detox" Berkala</h5>
+                            <p class="text-xs text-slate-600 mt-1">Tetapkan satu hari dalam seminggu (misalnya hari Minggu) sebagai hari bebas media sosial. Gunakan waktu tersebut untuk berolahraga, membaca buku, atau berkumpul bersama keluarga.</p>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Jebakan Fenomena 'Doomscrolling' Sebelum Tidur",
+                category: "Rubrik Opini",
+                date: "Edisi Khusus XI-5",
+                author: "Opini Siswa XI-5",
+                readTime: "3 Menit Baca",
+                content: `
+                    <p class="mb-4">'Doomscrolling' adalah istilah psikologi untuk perilaku terus-menerus mengusap layar HP membaca berita buruk atau konten negatif tanpa bisa berhenti, terutama saat menjelang tidur malam.</p>
+
+                    <p class="mb-4">Mengapa kita melakukannya? Otak manusia memiliki kecenderungan alami yang disebut 'negativity bias'—kebutuhan evolusioner untuk terus mencari informasi ancaman di sekitar kita agar merasa waspada. Namun dalam era algoritma tanpa henti, hal ini justru memicu insomnia, kecemasan berlebih, dan kelelahan mental saat bangun di pagi hari.</p>
+
+                    <p class="mb-4"><strong>Solusi Sederhana:</strong> Hentikan penggunaan HP minimal 45 menit sebelum tidur. Gantilah kebiasaan scroll layar dengan membaca buku fisik, mendengarkan musik relaksasi, atau melakukan journaling.</p>
+                `
+            },
+            {
+                title: "Mengenali Hoaks & Disinformasi Berbasis Algoritma",
+                category: "Tips & Edukasi",
+                date: "Edisi Khusus XI-5",
+                author: "Tim Edukasi XI-5 Kelompok 3",
+                readTime: "4 Menit Baca",
+                content: `
+                    <p class="mb-4">Penyebaran informasi palsu atau hoaks berlangsung 6 kali lebih cepat dibandingkan berita benar di media sosial. Hal ini dikarenakan konten berbau sensasional dan emosional lebih sering diklik oleh pengguna.</p>
+
+                    <h4 class="text-base font-bold text-slate-900 mt-6 mb-2">Cara Praktis Cek Fakta:</h4>
+                    <ul class="list-disc pl-5 space-y-2 mb-4 text-sm text-slate-700">
+                        <li><strong>Cek Kredibilitas Domain:</strong> Pastikan berita berasal dari media massa resmi bertanda centang atau situs terverifikasi.</li>
+                        <li><strong>Waspadai Judul Provokatif:</strong> Berita hoaks sering menggunakan huruf kapital berlebih dan tanda seru mendesak.</li>
+                        <li><strong>Periksa Tanggal Kejadian:</strong> Sering kali berita lama diunggah ulang untuk memicu kepanikan baru.</li>
+                        <li><strong>Gunakan Fitur Cek Fakta:</strong> Manfaatkan situs seperti turnbackhoax.id atau fitur cek gambar Google Lens.</li>
+                    </ul>
+                `
+            },
+            {
+                title: "Jejak Digital Itu Abadi: Warisan Masa Depan Remaja",
+                category: "Rubrik Opini",
+                date: "Edisi Khusus XI-5",
+                author: "Kelompok 3 XI-5",
+                readTime: "3 Menit Baca",
+                content: `
+                    <p class="mb-4">Setiap foto yang kamu unggah, komentar yang kamu tulis, bahkan unggahan yang sudah kamu hapus dapat tinggalkan jejak digital (digital footprint) di server internet.</p>
+
+                    <p class="mb-4">Saat ini, banyak universitas ternama dan perusahaan tempat kerja melakukan verifikasi latar belakang (background check) melalui akun media sosial calon mahasiswa atau karyawan mereka. Unggahan berbau kebencian atau tindakan tak terpuji di masa SMA bisa menjadi penghalang karier di masa depan.</p>
+
+                    <p class="mb-4"><strong>Pesan Kelompok 3:</strong> Jadikan akun media sosialmu sebagai cermin prestasi, kebaikan, dan kepribadian unggulmu. Bangunlah warisan digital yang membanggakan!</p>
+                `
+            }
+        ];
+
+        // System Likes State
+        const likes = [328, 194, 281, 412, 156, 188, 230];
+
+        function likeArticle(index) {
+            likes[index]++;
+            const elem = document.getElementById(`like-count-${index}`);
+            if (elem) {
+                elem.innerText = likes[index];
+            }
+        }
+
+        // Category Filtering Functionality
+        function filterCategory(category) {
+            document.querySelectorAll('.category-btn').forEach(btn => {
+                btn.classList.remove('bg-sky-600', 'text-white', 'shadow-md');
+                btn.classList.add('bg-slate-100', 'text-slate-700');
+            });
+
+            const activeBtn = document.getElementById(`btn-${category}`);
+            if (activeBtn) {
+                activeBtn.classList.remove('bg-slate-100', 'text-slate-700');
+                activeBtn.classList.add('bg-sky-600', 'text-white', 'shadow-md');
+            }
+
+            const cards = document.querySelectorAll('.article-card');
+            cards.forEach(card => {
+                const cardCategory = card.getAttribute('data-category');
+                if (category === 'all' || cardCategory.includes(category)) {
+                    card.style.display = 'flex';
+                    if (card.id === 'headline-section') card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Article Modal Viewer
+        function openArticleModal(index) {
+            const data = articlesData[index];
+            const modalContent = document.getElementById('modal-content');
+            
+            modalContent.innerHTML = `
+                <div class="inline-block bg-sky-100 text-sky-800 text-xs font-bold px-3 py-1 rounded-full mb-3">
+                    ${data.category}
+                </div>
+                <h2 class="text-2xl sm:text-3xl font-black text-slate-900 leading-tight mb-3">${data.title}</h2>
+                <div class="flex flex-wrap items-center gap-3 text-xs text-slate-400 mb-6 border-b border-slate-100 pb-4">
+                    <span><i class="fa-solid fa-pen-nib text-sky-500"></i> ${data.author}</span>
+                    <span>•</span>
+                    <span><i class="fa-regular fa-calendar"></i> ${data.date}</span>
+                    <span>•</span>
+                    <span><i class="fa-regular fa-clock"></i> ${data.readTime}</span>
+                </div>
+                <div class="text-slate-700 text-sm leading-relaxed space-y-3">
+                    ${data.content}
+                </div>
+                <div class="mt-8 pt-4 border-t border-slate-100 flex flex-wrap justify-between items-center gap-3">
+                    <button onclick="likeArticle(${index})" class="bg-rose-50 text-rose-600 px-4 py-2.5 rounded-xl text-xs font-bold flex items-center gap-2 hover:bg-rose-100 transition-colors">
+                        <i class="fa-solid fa-heart"></i> Suka Artikel Ini
+                    </button>
+                    <button onclick="copyArticleLink()" class="bg-slate-100 text-slate-700 px-4 py-2.5 rounded-xl text-xs font-bold flex items-center gap-2 hover:bg-slate-200 transition-colors">
+                        <i class="fa-solid fa-share-nodes"></i> Bagikan Artikel
+                    </button>
+                    <button onclick="closeArticleModal()" class="bg-slate-900 text-white px-5 py-2.5 rounded-xl text-xs font-bold hover:bg-slate-800 transition-colors ml-auto">
+                        Tutup
+                    </button>
+                </div>
+            `;
+            
+            document.getElementById('article-modal').classList.remove('hidden');
+            document.body.classList.add('overflow-hidden');
+        }
+
+        function closeArticleModal() {
+            document.getElementById('article-modal').classList.add('hidden');
+            document.body.classList.remove('overflow-hidden');
+        }
+
+        function copyArticleLink() {
+            const dummy = document.createElement('input');
+            document.body.appendChild(dummy);
+            dummy.value = window.location.href;
+            dummy.select();
+            document.execCommand('copy');
+            document.body.removeChild(dummy);
+            alert('Tautan artikel berhasil disalin!');
+        }
+
+        // Real-time Polling Logic
+        let hasVoted = false;
+        let pollData = { opt1: 56, opt2: 118, opt3: 90, opt4: 48 };
+
+        function votePoll(option) {
+            if (hasVoted) return;
+            hasVoted = true;
+
+            pollData[option]++;
+            const total = Object.values(pollData).reduce((a, b) => a + b, 0);
+
+            document.getElementById('poll-options').classList.add('hidden');
+            document.getElementById('poll-results').classList.remove('hidden');
+
+            for (let key in pollData) {
+                const percentage = Math.round((pollData[key] / total) * 100);
+                document.getElementById(`percent-${key}`).innerText = percentage + '%';
+                document.getElementById(`bar-${key}`).style.width = percentage + '%';
+            }
+
+            document.getElementById('total-votes').innerText = total;
+        }
+
+        // Sticky Board Logic
+        function toggleStickyModal() {
+            const modal = document.getElementById('sticky-modal');
+            modal.classList.toggle('hidden');
+        }
+
+        function addStickyNote(e) {
+            e.preventDefault();
+            const author = document.getElementById('sticky-author').value;
+            const text = document.getElementById('sticky-text').value;
+            const color = document.getElementById('sticky-color').value;
+
+            const board = document.getElementById('sticky-board');
+
+            const pins = ['bg-rose-500', 'bg-sky-500', 'bg-purple-500', 'bg-emerald-500', 'bg-amber-500'];
+            const randomPin = pins[Math.floor(Math.random() * pins.length)];
+            const rotations = ['rotate-1', '-rotate-1', 'rotate-2', '-rotate-2'];
+            const randomRot = rotations[Math.floor(Math.random() * rotations.length)];
+
+            const noteHtml = `
+                <div class="${color} p-4 rounded-xl shadow-md transform ${randomRot} hover:rotate-0 transition-transform relative">
+                    <div class="w-3.5 h-3.5 ${randomPin} rounded-full absolute -top-1.5 left-1/2 -translate-x-1/2 pin-shadow"></div>
+                    <p class="font-handwriting text-xl text-slate-800 leading-snug">
+                        "${text}"
+                    </p>
+                    <span class="block text-right text-xs font-bold text-slate-600 mt-2">— ${author}</span>
+                </div>
+            `;
+
+            board.insertAdjacentHTML('afterbegin', noteHtml);
+
+            document.getElementById('sticky-author').value = '';
+            document.getElementById('sticky-text').value = '';
+            toggleStickyModal();
+        }
+    </script>
+</body>
+</html>
